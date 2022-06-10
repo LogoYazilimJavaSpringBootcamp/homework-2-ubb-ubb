@@ -125,11 +125,11 @@ public class User {
                 .filter(elem -> (elem.getInvoiceList().stream().mapToDouble(Order::getAmount).average().getAsDouble() < price || greater))
                 .distinct()
                 .forEach(elem ->  System.out.println(elem.getSector()));
-
+/**
         Customer.companySet.stream()
                 .filter(elem-> elem.getInvoiceList().isEmpty() && !greater)
                 .distinct()
-                .forEach(elem ->  System.out.println(elem.getSector()));
+                .forEach(elem ->  System.out.println(elem.getSector()));*/
 
     }
 

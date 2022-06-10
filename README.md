@@ -18,7 +18,7 @@ Ancak JVM kurulumu her platform için farklıdır. Bu sebeple JVM platform bağ�
 Java'nın çoklu kalıtıma izin vermeme sebebi ikili anlam belirsizliğinin önüne geçmektir. Bu belirsizliğe en büyük örnek diamond problemidir. Aşağıda örnek UML diyagramından görüleceği üzere Class A'da methodA tanımlanmış ve Class B ve Class C de methodA override edilmiştir. Class D'nin B ve C nin çocukları olduğu durumda methodA'nın hangi sınıfın methodunu kullanacağı belirsizdir. 
 
 <p align="center">
-  <img src="https://i.ibb.co/N97tG2B/ubb2.png" alt="SUML Diagram for Diamond Problem"/>
+  <img src="https://i.ibb.co/N97tG2B/ubb2.png" alt="UML Diagram for Diamond Problem"/>
 </p>
 
 Java Lead Designer James Gosling, diğer dillerde bulunan, çoklu kalıtımla ilgili sorunların ortadan kaldırmanın, Java'nın yaratılmasındaki motivasyonlardan biri olduğunu belirtmiştir.  
@@ -59,5 +59,110 @@ Collection framework içerisinde bulunan veri yapıları;
   - HashMap: Map interface'inin temel implementasyonudur. Rastgele memory'de yer tutar.
 
 **5. Uygulama**
-TBC
+
+Uygulama amacı, kullanacak olan müşterinin, sipariş oluşturması, sipariş sonucu oluşan faturayı sisteme kaydedebilmesi ve siparişleri görüntüleyebilmesidir.
+Uygulama için istenen, Maven build tool ile oluşturulması, main metodda çalışması ve çeşitli filtrelemeleri sağlayabilmesidir.
+
+Maven Komutları  
+
+
+
+Lombok plugini kullanabilmek için pom.xml dosyasına dependency eklenmiştir.
+```
+ <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.24</version>
+      <scope>provided</scope>
+ </dependency>
+```
+
+Proje UML diagramı:  
+
+<p align="center">
+  <img src="https://i.ibb.co/4WrcJkN/package.png" alt="UML Diagram for Diamond Problem"/>
+</p>
+
+İsterleri için çalıştırılması gereken örnek kodlar aşağıdadır.
+
+Tüm müşterileri listelemek için:  
+```user.listAllCustomer();```
+```
+List of all customers:
+0 Enka
+1 Otokoc
+2 Isdemir
+3 Arcelik
+4 IKEA
+5 Casa
+```
+
+Yeni müşteri oluşturabilmek için:  
+```user.createNewCustomer("Enka", "Construction");```
+
+
+Müşterileri harfe göre sıralayabilmek için:  
+```user.listCustomerByLetter("C");```
+```
+List of customers that contains letter: C
+1 Otokoc
+3 Arcelik
+5 Casa
+```
+
+Fatura toplam tutarını firmanin kayır olduğu aya göre sıralamak için:  
+```user.listInvoiceByCustomerMonth(5);```
+```
+List of total invoice amount for customers that are registered in month: JUNE
+Enka 5300.0
+Otokoc 0.0
+Isdemir 4200.0
+Arcelik 0.0
+IKEA 1000.0
+Casa 600.0
+```
+
+Sistemdeki tüm faturaları listelemek için:  
+```user.listAllInvoice();```
+```
+List of all invoices:
+11/06/2022 Invoice ID: 0 Customer ID: 0 Total Price:5300.0 Total Price with VAT: 6254.0
+11/06/2022 Invoice ID: 1 Customer ID: 2 Total Price:4200.0 Total Price with VAT: 4956.0
+11/06/2022 Invoice ID: 2 Customer ID: 4 Total Price:1000.0 Total Price with VAT: 1180.0
+11/06/2022 Invoice ID: 3 Customer ID: 5 Total Price:600.0 Total Price with VAT: 708.0
+```
+
+Sistemde bulunan faturaları, fatura toplam tutarına göre filtrelemek için:  
+```user.listInvoiceByAmount(1500, true);```
+```
+List of invoices that are greater than 1500
+11/06/2022 Invoice ID: 0 Customer ID: 0 Total Price:5300.0 Total Price with VAT: 6254.0
+11/06/2022 Invoice ID: 1 Customer ID: 2 Total Price:4200.0 Total Price with VAT: 4956.0
+```
+
+
+Sistemde bulunan faturaların ortalamasını verilen değere göre filtrelemek için:  
+```user.getAverageByInvoice(1500, true);```
+```
+Average of invoices that are greater than 1500
+4750.0
+```
+
+Sistemde verilen miktarın altında veya üstünde olan fatura sahiplerinin isimlerini listelemek için:  
+```user.listCustomerByInvoice(500, true);```
+```
+List of customers that has invoices less than 500
+```
+
+Sistemde kayıt edilen fatura tarihine göre ortalaması verilen miktarın üstünde veya altında olan firmaların sektörlerini listelemek için:  
+```user.listSectorByAverageInvoice(5, 750, true);```
+```
+List of customer sectors that customer has average invoices less than 750 in month: JUNE
+Furniture
+```
+
+
+
+
+
 

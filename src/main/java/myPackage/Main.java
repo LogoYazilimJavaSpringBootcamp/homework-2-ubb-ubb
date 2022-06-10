@@ -15,12 +15,15 @@ public class Main {
         user.createNewCustomer("IKEA", "Furniture");
         user.createNewCustomer("Casa", "Furniture");
 
-        user.createNewMaterial(1, 100, "Screwdriver");
+
+        user.createNewMaterial(2, 1000, "Screwdriver");
         user.createNewMaterial(3, 500, "Saw");
-        user.createNewMaterial(1, 300, "Screws");
+        user.createNewMaterial(4, 300, "Screws");
         user.createNewMaterial(2, 300, "Fastener");
         user.createNewMaterial(1, 1000, "Power Tools");
 
+        user.createNewOrder();
+        user.createNewOrder();
         user.createNewOrder();
         user.createNewOrder();
 
@@ -33,18 +36,24 @@ public class Main {
         user.assignMaterialToOrder(1,2);
         user.assignMaterialToOrder(1,4);
 
+        user.assignMaterialToOrder(2,4);
+
+        user.assignMaterialToOrder(3,3);
+
         user.assignCustomerToInvoice(0,0);
         user.assignCustomerToInvoice(2,1);
+        user.assignCustomerToInvoice(4,2);
+        user.assignCustomerToInvoice(5,3);
 
 
         user.listAllCustomer();
-        user.listCustomerByLetter("A");
+        user.listCustomerByLetter("C");
         user.listInvoiceByCustomerMonth(5);
         user.listAllInvoice();
-        user.listInvoiceByAmount(1500, false);
-        user.getAverageByInvoice(800, true);
-        user.listCustomerByInvoice(800, true);
-        user.listSectorByAverageInvoice(5, 750, true);
+        user.listInvoiceByAmount(1500, true);
+        user.getAverageByInvoice(1500, true);
+        user.listCustomerByInvoice(500, false);
+        user.listSectorByAverageInvoice(5, 750, false);
 
 
 
