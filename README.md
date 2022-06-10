@@ -51,19 +51,287 @@ Collection framework içerisinde bulunan veri yapıları;
 - Set: Elementlerin sırasız ve benzersiz şekilde şekilde tutulduğu arabirimdir.
   - HashSet: Objelerin benzersiz şekilde tutulduğu veri yapısıdır.
   - LinkedHashSet: HashSet veri yapısının sıralı bir şekilde tutulduğu doubly-linked-list veri yapısıdır. 
-  - TreeSet: Elementlerin artan sırayla tutulduğu veri yapısıdır.
+  - TreeSet: Elementlerin sırayla tutulduğu veri yapısıdır. compareTo override edilerek sıralama ölçütü ayarlanabilir.
 - Map: Key,Value anahtar değer yapısına sahip veri yapısıdır. Dict özelliklerini taşır.
-  - TreeMap: Key value artan şekilde verileri tutar.
+  - TreeMap: Key value sıralı şekilde verileri tutar. compareTo override edilerek sıralama ölçütü ayarlanabilir.
+  - HashMap: Map interface'inin temel implementasyonudur. Rastgele memory'de yer tutar.
   - HashTable: HashMap'ten farkı senkronize olmasıdır. Null değer almaz.
   - LinkedHashMap: HashMap özelliklerine ek olarak, ekleme sırasına göre verileri tutar.
-  - HashMap: Map interface'inin temel implementasyonudur. Rastgele memory'de yer tutar.
 
 **5. Uygulama**
 
 Uygulama amacı, kullanacak olan müşterinin, sipariş oluşturması, sipariş sonucu oluşan faturayı sisteme kaydedebilmesi ve siparişleri görüntüleyebilmesidir.
 Uygulama için istenen, Maven build tool ile oluşturulması, main metodda çalışması ve çeşitli filtrelemeleri sağlayabilmesidir.
 
-Maven Komutları  
+Maven Build Lifecycle Komutları  
+clean: Maven tarafından oluşturulan tüm dosyalar ve klasörleri siler. 
+```
+mvn clean
+```
+
+```
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ AccountingSystem ---
+[INFO] Deleting /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.269 s
+[INFO] Finished at: 2022-06-11T02:11:53+03:00
+[INFO] ------------------------------------------------------------------------
+```
+
+validate: Projenin doğruluğunu kontrol eder. Gerekli bilgilerin sağlandığını teyit eder.  
+```
+mvn validate
+```
+
+```
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.178 s
+[INFO] Finished at: 2022-06-11T02:17:12+03:00
+[INFO] ------------------------------------------------------------------------
+```
+
+compile: Proje kaynak kodlarını derler.  
+```
+mvn compile
+```
+```
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 7 source files to /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.641 s
+[INFO] Finished at: 2022-06-11T02:20:01+03:00
+[INFO] ------------------------------------------------------------------------
+```
+
+test: Projede derlenen kaynak kodlarını, uygun test frameworkleri ile koşturur. 
+```
+mvn test
+```
+```
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
+[INFO] No tests to run.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.115 s
+[INFO] Finished at: 2022-06-11T02:22:35+03:00
+[INFO] ------------------------------------------------------------------------
+```
+
+package: Derlenen kodu paketler, örnek JAR formatı.
+```
+mvn package
+```
+```
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
+[INFO] Building jar: /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/AccountingSystem-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.847 s
+[INFO] Finished at: 2022-06-11T02:24:07+03:00
+[INFO] ------------------------------------------------------------------------
+```
+
+verify: Entegrasyon testleri ile geçerleme yapar.
+```
+mvn verify
+```
+```
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.809 s
+[INFO] Finished at: 2022-06-11T02:25:59+03:00
+[INFO] ------------------------------------------------------------------------
+```
+install: Oluşturulan paketi lokal repoya aktarır.
+```
+mvn install
+```
+```
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ AccountingSystem ---
+[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/AccountingSystem-1.0-SNAPSHOT.jar to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.jar
+[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/pom.xml to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.930 s
+[INFO] Finished at: 2022-06-11T02:27:55+03:00
+[INFO] ------------------------------------------------------------------------
+```
+
+deploy: Final paketi remote repository'ye kopyalar.
+```
+mvn deploy
+```
+```
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< org.example:AccountingSystem >--------------------
+[INFO] Building AccountingSystem 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ AccountingSystem ---
+[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/AccountingSystem-1.0-SNAPSHOT.jar to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.jar
+[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/pom.xml to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ AccountingSystem ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.901 s
+[INFO] Finished at: 2022-06-11T02:31:04+03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project AccountingSystem: Deployment failed: repository element was not specified in the POM inside distributionManagement element or in -DaltDeploymentRepository=id::layout::url parameter -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+```
+
+
 
 
 
