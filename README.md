@@ -351,7 +351,7 @@ Proje UML diagramı:
   <img src="https://i.ibb.co/4WrcJkN/package.png" alt="UML Diagram for Diamond Problem"/>
 </p>
 
-İsterleri için çalıştırılması gereken örnek kodlar aşağıdadır.
+İsterler için çalıştırılması gereken örnek kodlar aşağıdadır.
 
 Tüm müşterileri listelemek için:  
 ```user.listAllCustomer();```
@@ -417,13 +417,13 @@ Average of invoices that are greater than 1500
 ```
 
 Sistemde verilen miktarın altında veya üstünde olan fatura sahiplerinin isimlerini listelemek için:  
-```user.listCustomerByInvoice(500, true);```
+```user.listCustomerByInvoice(500, false);```
 ```
 List of customers that has invoices less than 500
 ```
 
 Sistemde kayıt edilen fatura tarihine göre ortalaması verilen miktarın üstünde veya altında olan firmaların sektörlerini listelemek için:  
-```user.listSectorByAverageInvoice(5, 750, true);```
+```user.listSectorByAverageInvoice(5, 750, false);```
 ```
 List of customer sectors that customer has average invoices less than 750 in month: JUNE
 Furniture
