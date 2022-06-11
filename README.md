@@ -378,7 +378,7 @@ List of customers that contains letter: C
 5 Casa
 ```
 
-Fatura toplam tutarını firmanin kayır olduğu aya göre sıralamak için:  
+Fatura toplam tutarını firmanin kayıt olduğu aya göre sıralamak için:  
 ```user.listInvoiceByCustomerMonth(5);```
 ```
 List of total invoice amount for customers that are registered in month: JUNE
