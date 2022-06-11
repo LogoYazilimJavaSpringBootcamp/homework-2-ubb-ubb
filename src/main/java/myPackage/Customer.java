@@ -7,12 +7,20 @@ import java.util.*;
 
 @Getter
 @Setter
+/**
+ * Represents a Customer.
+ * This class inherited by Company class.
+ */
 public class Customer extends Company implements Comparable {
 
-
-    private double totalAmount;
-
-
+    /**
+     * Creates an customer with the specified name and sector.
+     * Creation date is assigned to this.date
+     * New Company ID created for each new Customer object.
+     *
+     * @param name   The customer's name.
+     * @param sector The customer's sector.
+     */
     public Customer(String name, String sector) {
         this.setName(name);
         this.setSector(sector);
@@ -24,12 +32,22 @@ public class Customer extends Company implements Comparable {
         Company.companySet.add(this);
     }
 
+    /**
+     * Converts class object to string
+     *
+     * @return A string name represents this class
+     */
     @Override
     public String toString() {
         return this.getName();
     }
 
-
+    /**
+     * Compares Customer object with another object
+     * Required for TreeSet
+     *
+     * @return integer
+     */
     @Override
     public int compareTo(Object o) {
 
@@ -37,9 +55,8 @@ public class Customer extends Company implements Comparable {
             return 1;
         } else if (this.getCID() < ((Customer) o).getCID()) {
             return -1;
-        }
-        else {
-        return 0;
+        } else {
+            return 0;
         }
     }
 }

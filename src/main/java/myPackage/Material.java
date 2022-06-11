@@ -8,6 +8,9 @@ import java.util.List;
 
 @Getter
 @Setter
+/**
+ * Material class represents materials, with quantity, unit price and total price.
+ */
 public class Material {
 
     public int quantity;
@@ -18,7 +21,14 @@ public class Material {
     private static int counter = 0;
     public static List<Material> materialDatabase = new ArrayList<>();
 
-
+    /**
+     * Creates a Material with the specified quantity, price and material name.
+     * New Material ID created for each new Company object.
+     *
+     * @param quantity     Material quantity.
+     * @param price        Material unit price.
+     * @param materialName Material name
+     */
     public Material(int quantity, int price, String materialName) {
         this.quantity = quantity;
         this.price = price;
