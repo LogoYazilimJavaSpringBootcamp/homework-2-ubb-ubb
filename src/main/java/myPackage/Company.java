@@ -28,6 +28,7 @@ abstract class Company {
 
     // Treeset that all created Company objects are stored in this treeset.
     public static TreeSet<Company> companySet = new TreeSet<>();
+    public static Map<Company,String> companyMap = new HashMap();
 
     // Invoices that company has stored as list.
     private List<Order> invoiceList = new LinkedList<>();

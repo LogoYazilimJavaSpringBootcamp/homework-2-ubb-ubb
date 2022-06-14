@@ -30,6 +30,7 @@ public class Customer extends Company implements Comparable {
                 .filter(c -> c.getCompanyType() == "C")
                 .count());
         Company.companySet.add(this);
+        Company.companyMap.put(this, this.getCompanyType());
     }
 
     /**

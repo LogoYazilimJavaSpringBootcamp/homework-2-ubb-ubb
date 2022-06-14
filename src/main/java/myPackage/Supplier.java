@@ -35,6 +35,7 @@ public class Supplier extends Company {
                 .filter(c -> c.getCompanyType() == "S")
                 .count());
         Company.companySet.add(this);
+        Company.companyMap.put(this, this.getCompanyType());
     }
 
     /**

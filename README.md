@@ -42,21 +42,133 @@ Java ekosisteminde bulunan popüler bazı build toollar: Maven, Gradle, Ant, Jen
 Collection framework içerisinde bulunan veri yapıları;
 - List: Collection interface'inden inherit eden bir interfacedir. List özellikleri barındırır. 
   - ArrayList: Büyüklüğü dinamiktir. Array veri yapısıdır.
+   ```
+   List<E> arrayList = new ArrayList<>(); // Arraylist tanımlanması. 
+   arrayList.add(Object); // ArrayListe obje ekleme yapmak.
+   arrayList.remove(Object); // ArrayListten eleman çıkarmak.
+   arrayList.clear(); // Arraylistin içindeki verileri sıfırlamak.
+   arrayList.clone(); // Arraylisti başka bir yapıya kopyalamak.
+   arrayList.contains(Object o) // Arraylist içerisinde Objenin dahil olup olmadığını kontrol eder.
+   arrayList.get(int index); // Index'e göre veri çekmek.
+   arrayList.size(); // ArrayList kapasitesine ulaşmak.
+   arrayList.toArray(); // ArrayList'i array yapısına dönüştürmek.   
+   ```
   - LinkedList: Büyüklüğü dinamiktir. Veri yapısında verinin kendisi ile beraber bir sonraki veriyi gösteren pointer tutulur.
+  ```
+   List<E> linkedList = new LinkedList<>(); // LinkedList tanımlanması. 
+   linkedList.add(Object); // LinkedListe obje ekleme yapmak.
+   linkedList.addFirst(Object) // Objeyi listenin başına ekler.
+   linkedList.addLast(Object) // Objeyi listenin sonuna ekler.
+   linkedList.remove(Object); // Linkedlistten eleman çıkarmak.
+   linkedList.clear(); // Linkedlist içindeki verileri sıfırlamak.
+   linkedList.clone(); // Linkedlisti başka bir yapıya kopyalamak.
+   linkedList.get(int index); // Index'e göre veri çekmek.
+   linkedList.contains(object o) // LinkedList içerisinde Objenin dahil olup olmadığını kontrol eder.
+   linkedList.size(); // Veri yapısının kapasitesine ulaşmak.
+   linkedList.toArray(); // Link'i array yapısına dönüştürmek. 
+   linkedList.push() // Verinin sonuna objeyi ekler.
+   linkedList.pop() // Verinin sonundaki objeyi alır. Yapıdan siler.
+   
+   ```
   - Vector: Büyüklüğü dinamik array yapısıdır. Çoklu yürütme sırasında senkronize olarak çalışır. 
+  ```
+  Vector<E> v = new Vector<E>(); // Vector tanımlanması.
+  v.add(E e); //Vectore ekleme yapmak,
+  v.remove(E e); // Vectorden eleman çıkartmak.
+  v.clear(); // Vector yapısını temizlemek
+  v.size(); // Vector büyüklüğüne ulaşmak.
+  ```
   - Stack: LIFO (Last In First Out) prensibi ile çalışan bir veri yapısıdır.Push, pop operasyonları gerçekleştirilebillir.
+  ```
+  Stack<E> stack = new Stack<E>();
+  stack.push(Object o); // Object o yu yığıtın en üstüne ekler.
+  stack.pop(); // Yığıtın en üstündeki veriyi döndürür ve yapıdan siler.
+  stack.peek(); // Yığıtın en üstündeki veriyi gösterir ama yapıdan silmez.
+  stack.search(Object o); // Yığıt içerisinde object o nun hangi sırada olduğunu döndürür. Eğer yoksa -1 döndürür.
+  stack.empty(); // Yığıtın boş mu dolu mu olduğunu döndürür.
+  ```
+
 - Queue: Collection interface'inden inherit eden FIFO (First In First Out) prensibine dayanan bir interfacedir.
   - PriorityQueue: Önceliklendirme bazlı FIFO prensibine sahip veri yapısıdır.
+  ```
+  PriorityQueue<E> pq = new PriorityQueue<E>(); //PriorityQueue tanımlanması.
+  pq.add(Object o); // Yapıya veri ekler.
+  pq.peek(); // En üstteki veriyi döndürür.
+  pq.poll() ; // En üstteki veriyi döndürür ve siler.
+  pq.remove(Object o) // Verideki verilen objeyi siler.
+  ```
   - ArrayDeque: Queuenin başına ve sonuna ekleme ve çıkarma imkanı verir.
+  ```
+  ArrayDeque<E> dq = new ArrayDeque<E>(); //Arraydeque tanımlanması.
+  dq.add(Object o); // Verinin sonuna objeyi ekler.
+  dq.addFirst(Object o); // Verinin başına objeyi ekler.
+  dq.addLast(Object o); // Verinin sonuna objeyi ekler.
+  dq.push(Object o); // Yığıta objeyi ekler.
+  dq.pop(); // Verinin sonundaki objeyi alır ve yapıdan siler.
+  ```
 - Set: Elementlerin sırasız ve benzersiz şekilde şekilde tutulduğu arabirimdir.
   - HashSet: Objelerin benzersiz şekilde tutulduğu veri yapısıdır.
+  ```
+  HashSet<E> hs = new HashSet<E>(); // Hashset tanımlanması.
+  hs.add(Object o); // Object o yu kümeye ekler.
+  hs.remove(Object o); // Object o yu kümeden siler.
+  hs.clear(); // Kümenin içindeki elemanları siler.
+  hs.size(); // Küme büyüklüğünü döndürür.
+  ```
   - LinkedHashSet: HashSet veri yapısının sıralı bir şekilde tutulduğu doubly-linked-list veri yapısıdır. 
+  ```
+  LinkedHashSet<E> hs = new LinkedHashSet<E>();
+  hs.add(Object o); // Object o yu kümeye ekler.
+  hs.remove(Object o); // Object o yu kümeden siler.
+  hs.clear(); // Kümenin içindeki elemanları siler.
+  hs.size(); // Küme büyüklüğünü döndürür.
+  ```
   - TreeSet: Elementlerin sırayla tutulduğu veri yapısıdır. compareTo override edilerek sıralama ölçütü ayarlanabilir.
+  ```
+  TreeSet ts = new TreeSet(); 
+  ts.add(Object o); // Objeyi yapıya eklemek.
+  ts.remove(Object o); //Objeyi yapıdan çıkartmak.
+  ts.clear(); // Elemanları silmek.
+  ts.clone(); // Yapıyı kopyalamak.
+  ```
+
 - Map: Key,Value anahtar değer yapısına sahip veri yapısıdır. Dict özelliklerini taşır.
   - TreeMap: Key value sıralı şekilde verileri tutar. compareTo override edilerek sıralama ölçütü ayarlanabilir.
+  ```
+  TreeMap<E,E> tm = new TreeMap<E, E>();
+  tm.containsKey(Object o); // Anahtar tanımında objenin olup olmadığını döndürür.
+  tm.containsValue(Object o); // Değerlerde objenin olup olmadığını döndürür.
+  tm.put(Object key, Object value); // Yapıya Anahtar veri ilişkisi ekler
+  tm.keySet(); // Yapıdaki anahtarları döndürür.
+  tm.get(Object key) // Anahtar karşılığı değeri döndürür.
+  ```
   - HashMap: Map interface'inin temel implementasyonudur. Rastgele memory'de yer tutar.
+  ```
+  HashMap<E,E> hm = new HashMap<E, E>();
+  hm.containsKey(Object o); // Anahtar tanımında objenin olup olmadığını döndürür.
+  hm.containsValue(Object o); // Değerlerde objenin olup olmadığını döndürür.
+  hm.put(Object key, Object value); // Yapıya Anahtar veri ilişkisi ekler
+  hm.keySet(); // Yapıdaki anahtarları döndürür.
+  hm.get(Object key) // Anahtar karşılığı değeri döndürür.
+  ```
   - HashTable: HashMap'ten farkı senkronize olmasıdır. Null değer almaz.
+  ```
+  Hashtable<E,E> ht = new Hashtable<E, E>();
+  ht.containsKey(Object o); // Anahtar tanımında objenin olup olmadığını döndürür.
+  ht.containsValue(Object o); // Değerlerde objenin olup olmadığını döndürür.
+  ht.put(Object key, Object value); // Yapıya Anahtar veri ilişkisi ekler
+  ht.keySet(); // Yapıdaki anahtarları döndürür.
+  ht.get(Object key) // Anahtar karşılığı değeri döndürür.
+  ```
   - LinkedHashMap: HashMap özelliklerine ek olarak, ekleme sırasına göre verileri tutar.
+  ```
+  LinkedHashMap<K, V> lhm = new LinkedHashMap<K, V>();
+  lhm.containsValue(Object o); // Değerlerde objenin olup olmadığını döndürür.
+  lhm.put(Object key, Object value); // Yapıya Anahtar veri ilişkisi ekler
+  lhm.keySet(); // Yapıdaki anahtarları döndürür.
+  lhm.get(Object key) // Anahtar karşılığı değeri döndürür.
+
+  ```
 
 **5. Uygulama**
 
@@ -69,268 +181,39 @@ clean: Maven tarafından oluşturulan tüm dosyalar ve klasörleri siler.
 mvn clean
 ```
 
-```
-[INFO] Scanning for projects...
-[INFO]
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO]
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ AccountingSystem ---
-[INFO] Deleting /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.269 s
-[INFO] Finished at: 2022-06-11T02:11:53+03:00
-[INFO] ------------------------------------------------------------------------
-```
-
 validate: Projenin doğruluğunu kontrol eder. Gerekli bilgilerin sağlandığını teyit eder.  
 ```
 mvn validate
 ```
-
-```
-[INFO] Scanning for projects...
-[INFO]
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.178 s
-[INFO] Finished at: 2022-06-11T02:17:12+03:00
-[INFO] ------------------------------------------------------------------------
-```
-
 compile: Proje kaynak kodlarını derler.  
 ```
 mvn compile
 ```
-```
-[INFO] Scanning for projects...
-[INFO]
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 7 source files to /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/classes
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.641 s
-[INFO] Finished at: 2022-06-11T02:20:01+03:00
-[INFO] ------------------------------------------------------------------------
-```
-
 test: Projede derlenen kaynak kodlarını, uygun test frameworkleri ile koşturur. 
 ```
 mvn test
-```
-```
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
-[INFO] No tests to run.
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.115 s
-[INFO] Finished at: 2022-06-11T02:22:35+03:00
-[INFO] ------------------------------------------------------------------------
 ```
 
 package: Derlenen kodu paketler, örnek JAR formatı.
 ```
 mvn package
 ```
-```
-[INFO] Scanning for projects...
-[INFO]
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
-[INFO] No sources to compile
-[INFO]
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
-[INFO] No tests to run.
-[INFO]
-[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
-[INFO] Building jar: /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/AccountingSystem-1.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.847 s
-[INFO] Finished at: 2022-06-11T02:24:07+03:00
-[INFO] ------------------------------------------------------------------------
-```
+
 
 verify: Entegrasyon testleri ile geçerleme yapar.
 ```
 mvn verify
 ```
-```
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
-[INFO] No tests to run.
-[INFO] 
-[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.809 s
-[INFO] Finished at: 2022-06-11T02:25:59+03:00
-[INFO] ------------------------------------------------------------------------
-```
+
 install: Oluşturulan paketi lokal repoya aktarır.
 ```
 mvn install
-```
-```
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
-[INFO] No tests to run.
-[INFO] 
-[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
-[INFO] 
-[INFO] --- maven-install-plugin:2.4:install (default-install) @ AccountingSystem ---
-[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/AccountingSystem-1.0-SNAPSHOT.jar to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.jar
-[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/pom.xml to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.pom
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.930 s
-[INFO] Finished at: 2022-06-11T02:27:55+03:00
-[INFO] ------------------------------------------------------------------------
 ```
 
 deploy: Final paketi remote repository'ye kopyalar.
 ```
 mvn deploy
 ```
-```
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------------< org.example:AccountingSystem >--------------------
-[INFO] Building AccountingSystem 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/main/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AccountingSystem ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AccountingSystem ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AccountingSystem ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ AccountingSystem ---
-[INFO] No tests to run.
-[INFO] 
-[INFO] --- maven-jar-plugin:3.2.2:jar (default-jar) @ AccountingSystem ---
-[INFO] 
-[INFO] --- maven-install-plugin:2.4:install (default-install) @ AccountingSystem ---
-[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/target/AccountingSystem-1.0-SNAPSHOT.jar to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.jar
-[INFO] Installing /home/ubb-gyb/Swe/05-bootcamp/homework-1-ubb-ubb/pom.xml to /home/ubb-gyb/.m2/repository/org/example/AccountingSystem/1.0-SNAPSHOT/AccountingSystem-1.0-SNAPSHOT.pom
-[INFO] 
-[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ AccountingSystem ---
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.901 s
-[INFO] Finished at: 2022-06-11T02:31:04+03:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project AccountingSystem: Deployment failed: repository element was not specified in the POM inside distributionManagement element or in -DaltDeploymentRepository=id::layout::url parameter -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-```
-
 
 
 
@@ -348,7 +231,7 @@ Lombok plugini kullanabilmek için pom.xml dosyasına dependency eklenmiştir.
 Proje UML diagramı:  
 
 <p align="center">
-  <img src="https://i.ibb.co/4WrcJkN/package.png" alt="UML Diagram for Diamond Problem"/>
+  <img src="https://i.ibb.co/CBm1dnt/package2.png" alt="UML Diagram for Diamond Problem"/>
 </p>
 
 İsterler için çalıştırılması gereken örnek kodlar aşağıdadır.
