@@ -24,10 +24,10 @@ public class Customer extends Company implements Comparable {
     public Customer(String name, String sector) {
         this.setName(name);
         this.setSector(sector);
-        this.setCompanyType("C");
+        this.setCompanyType("CUSTOMER");
         this.date = new Date();
         this.setCID((int) companySet.stream()
-                .filter(c -> c.getCompanyType() == "C")
+                .filter(c -> c.getCompanyType() == "CUSTOMER")
                 .count());
         Company.companySet.add(this);
         Company.companyMap.put(this, this.getCompanyType());

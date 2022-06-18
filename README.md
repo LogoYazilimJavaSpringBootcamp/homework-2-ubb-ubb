@@ -5,11 +5,11 @@ açıklayın. (20 Puan)***
 
 Spring MVC: Web uygulamaları build etmek için kullanılır. Model-View-Controller design patternini kullanır. Loosely
 couple ve flexible uygulamalar hazırlamaya yardımcı olur. Spring core frameworkündeki tüm temel özellikleri kullanır (
-IoC, DI). Model, uygulamanın verisini tutar. Veri tek bir obje ya da veri koleksiyonu olabilir Genellikle POJO'ları
+IoC, DI). Model, uygulamanın verisini tutar. Veri tek bir obje ya da veri koleksiyonu olabilir. Genellikle POJO'ları
 içerir. Controller, uygulamanın logicini tutar. @Controller anotasyonu ile sınıflar işaretlenebilir. View, bilginin
 istenen formatta yansıtılmasıdır. Genelde JSP+JSTL kullanılır.
 
-JSP: Java Server Pages dinamik, platform bağımsız web uygulamaları yaratmaya yarayan server tarafı bir programlama
+JSP: Java(Jakarta) Server Pages dinamik, platform bağımsız web uygulamaları yaratmaya yarayan server tarafı bir programlama
 teknolojisidir. JSP ile sayfa hazırlamak genellikle hızlı ve kolaydır. Java servletleri ile sorunsuz bir şekilde
 etkileşir.
 
@@ -22,7 +22,7 @@ Vaadin: Açık kaynak kodlu web uygulama geliştirme platformudur. GUI'yi sadece
 sağlar. Bu sebeple sırf Java ile programlama yapabilen geliştiriciler için kolaylık sağlamaktadır. UI komponentlerini
 dokümantasyonda yazıldığı şekilde kolayca sayfaya eklenebilir.
 
-Hibernate: Hibernate database ile olan etkileşimi basitleştiren bir frameworktür. Açık kaynak kodlu, lightweid ve ORM
+Hibernate: Hibernate database ile olan etkileşimi basitleştiren bir frameworktür. Açık kaynak kodlu, lightweight ve ORM
 aracıdır. JPA özelliklerini implement etmiştir. Persistance logic geliştirmemizi sağlar. Persistence logic geliştirmek
 için Objeleri kullanır.
 
@@ -35,14 +35,14 @@ optimizasyonu ve responsive tasarım yapmamıza olanak sağlar.
 
 ***• Katmanlı mimari nedir? (10 Puan)***
 
-Katmanlı mimari, en popüler yazılım mimarilerden bir tanesidir. Katmanlı mimaride birbirine benzeyen modüller veya
+Katmanlı mimari, en popüler yazılım mimarilerden biridir. Katmanlı mimaride birbirine benzeyen modüller veya
 component'ler gruplandırılarak aynı katmanda tutulur. Her katman spesifik görevi yerine getirir. Ayrıca n-tier
 architecture olarak da bilinir. Katman mimarisi katman sayısı konusunda kısıtlama getirmez. İsimlendirme herhangi bir
 tanım olabilir ancak genelde presentation layer, business layer ve physical layer bulunur. Katmanlar arası bağlantı,
 method çağrısı, database sorgusu, obje veya çağrı ileten herhangi bir yapı olabilir.
 
 Presentation layer son kullanıcıya gösterilecek tüm GUI/interface sınıf ve metodlarını tutar. Ideal olarak son
-kullanıcının kullanacağı layer olarak gruplandırılmalıdır.
+kullanıcının kullanacağı layer olarak gruplandırılır.
 
 Business/logic layer uygulamanın fonksiyonlarının yerine getirmesi için tüm logici tutar. Data bütünleştirme, hesaplama
 ve sorgu işlemleri bu layerda yapılır. Ana logic burda ifade edilir.
@@ -72,11 +72,11 @@ alır.
 
 GC temel olarak 2 adımda işlemlerini gerçekleştirir.
 
-Mark: GC, hangi objelerin memory'de kullanılıp kullanılmadığını işaretler.
+Mark: GC, objelerin memory'de kullanılıp kullanılmadığını işaretler.
 
 Sweep: Mark adımında işaretlenen objeleri kaldırır.
 
-Avantajları, manuel memory allocation/deallcoation yapma zorunluğunu kaldırmasıdır. Pointer kullanım kontrolü yapmamıza
+Avantajları, manuel memory allocation/deallocation yapma zorunluğunu kaldırmasıdır. Pointer kullanım kontrolü yapmamıza
 gerek kalmaz. Otomatik Memory leak kontrolü sağlar.
 
 Dezavantajları ise, JVM tüm objeleri takip edeceği için CPU kullanımını arttırmaktadır. Bazı GC implemantasyonları
@@ -168,6 +168,11 @@ public class CompanyFactory {
         Company company7 = company.getType("SUPPLIER", "Hafele" , "Hardware");
         Company company8 = company.getType("SUPPLIER", "Bauhaus" , "Wood works");
         Company company9 = company.getType("SUPPLIER", "Amazon" , "Books");
+        
+        System.out.println(Company.companyMap);
+```
+```
+{Hafele=SUPPLIER, Vestel=CUSTOMER, Arcelik=CUSTOMER, Enka=CUSTOMER, Bauhaus=SUPPLIER, Amazon=SUPPLIER, Bauhaus=CUSTOMER, IKEA=CUSTOMER, Hilti=SUPPLIER}
 ```
 
 ***• Singleton ve AbstractFactory patterlerini implemente eden kodu yazın.(25 Puan)***

@@ -30,10 +30,10 @@ public class Supplier extends Company implements Comparable {
         this.setSector(sector);
         this.balance = 0;
         this.receivable = 0;
-        this.setCompanyType("S");
+        this.setCompanyType("SUPPLIER");
         this.date = new Date();
         this.setCID((int) companySet.stream()
-                .filter(c -> c.getCompanyType() == "S")
+                .filter(c -> c.getCompanyType() == "SUPPLIER")
                 .count());
         Company.companySet.add(this);
         Company.companyMap.put(this, this.getCompanyType());
