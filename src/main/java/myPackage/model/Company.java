@@ -1,4 +1,4 @@
-package myPackage;
+package myPackage.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,12 +12,10 @@ import java.util.*;
  * Represents a company.
  * This is an abstract class.
  */
-abstract class Company {
-    // Customer ID
+public abstract class Company {
+    // Company ID
     private int CID;
 
-    // Supplier ID
-    private int SID;
 
     private String name;
     private String sector;
@@ -32,4 +30,6 @@ abstract class Company {
 
     // Invoices that company has stored as list.
     private List<Order> invoiceList = new LinkedList<>();
+
+
 }

@@ -1,4 +1,4 @@
-package myPackage;
+package myPackage.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -52,9 +52,9 @@ public class Customer extends Company implements Comparable {
     @Override
     public int compareTo(Object o) {
 
-        if (this.getCID() > ((Customer) o).getCID()) {
+        if (this.getCID() > ((Company) o).getCID()) {
             return 1;
-        } else if (this.getCID() < ((Customer) o).getCID()) {
+        } else if (this.getCID() < ((Company) o).getCID()) {
             return -1;
         } else {
             return 0;

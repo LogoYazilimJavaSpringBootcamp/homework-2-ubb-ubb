@@ -1,6 +1,8 @@
 package myPackage;
 
-import java.util.*;
+import myPackage.factory.CompanyFactory;
+import myPackage.model.Company;
+import myPackage.service.Service;
 
 /**
  * Main method to run User class methods.
@@ -9,17 +11,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Create new User object
-        User user = new User();
 
-        // Create new Customer
-        user.createNewCustomer("Enka", "Construction");
-        user.createNewCustomer("Otokoc", "Automotive");
-        user.createNewCustomer("Isdemir", "Industrial");
-        user.createNewCustomer("Arcelik", "Electronics");
-        user.createNewCustomer("IKEA", "Furniture");
-        user.createNewCustomer("Casa", "Furniture");
+        // Creating new Companies with Factory Method
+        CompanyFactory company = new CompanyFactory();
 
+        Company company1 = company.getType("CUSTOMER", "Vestel", "Electronics");
+        Company company2 = company.getType("CUSTOMER", "Bauhaus" , "Wood works");
+        Company company3 = company.getType("CUSTOMER", "Arcelik" , "Electronics");
+        Company company4 = company.getType("CUSTOMER", "IKEA" , "Wood works");
+        Company company5 = company.getType("CUSTOMER", "Enka" , "Construction");
+        Company company6 = company.getType("SUPPLIER", "Hilti", "Tools");
+        Company company7 = company.getType("SUPPLIER", "Hafele" , "Hardware");
+        Company company8 = company.getType("SUPPLIER", "Bauhaus" , "Wood works");
+        Company company9 = company.getType("SUPPLIER", "Amazon" , "Books");
+        System.out.println(Company.companyMap);
+
+
+
+        // First homework requirements;
+        Service user = new Service();
         //Create new Materials
         user.createNewMaterial(2, 1000, "Screwdriver");
         user.createNewMaterial(3, 500, "Saw");
@@ -51,7 +61,7 @@ public class Main {
         user.assignCustomerToInvoice(0, 0);
         user.assignCustomerToInvoice(2, 1);
         user.assignCustomerToInvoice(4, 2);
-        user.assignCustomerToInvoice(5, 3);
+        user.assignCustomerToInvoice(3, 3);
 
         // List all customers.
         user.listAllCustomer();
@@ -69,5 +79,6 @@ public class Main {
         user.listCustomerByInvoice(500, false);
         // List customer sectors average is less than 750 and invoices are in month June.
         user.listSectorByAverageInvoice(5, 750, false);
+
     }
 }

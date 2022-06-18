@@ -1,7 +1,8 @@
-package myPackage;
+package myPackage.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import myPackage.factory.CompanyFactory;
 
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import java.util.Date;
  * Represents a Supplier.
  * This class inherited by Company class.
  */
-public class Supplier extends Company {
+public class Supplier extends Company implements Comparable {
 
     private int balance;
     private int receivable;
@@ -31,7 +32,7 @@ public class Supplier extends Company {
         this.receivable = 0;
         this.setCompanyType("S");
         this.date = new Date();
-        this.setSID((int) companySet.stream()
+        this.setCID((int) companySet.stream()
                 .filter(c -> c.getCompanyType() == "S")
                 .count());
         Company.companySet.add(this);
@@ -46,5 +47,18 @@ public class Supplier extends Company {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+
+        if (this.getCID() > ((Company) o).getCID()) {
+            return 1;
+        } else if (this.getCID() < ((Company) o).getCID()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

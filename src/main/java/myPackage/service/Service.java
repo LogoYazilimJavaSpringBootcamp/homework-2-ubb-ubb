@@ -1,14 +1,17 @@
-package myPackage;
+package myPackage.service;
 
-import java.text.SimpleDateFormat;
+import myPackage.model.Company;
+import myPackage.model.Customer;
+import myPackage.model.Material;
+import myPackage.model.Order;
+
 import java.time.Month;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Represents a user actions.
  */
-public class User {
+public class Service {
 
     Order invoice;
     Customer customer;
@@ -16,7 +19,7 @@ public class User {
     /**
      * Creates User class with no parameter.
      */
-    public User() {
+    public Service() {
 
     }
 
@@ -27,7 +30,7 @@ public class User {
      * @param customer Customer object.
      * @param invoice  Order.
      */
-    public User(Customer customer, Order invoice) {
+    public Service(Customer customer, Order invoice) {
         this.invoice = invoice;
         this.customer = customer;
     }
@@ -38,7 +41,7 @@ public class User {
      *
      * @param customer Customer object.
      */
-    public User(Customer customer) {
+    public Service(Customer customer) {
         this.customer = customer;
     }
 
@@ -48,7 +51,7 @@ public class User {
      *
      * @param invoice Order.
      */
-    public User(Order invoice) {
+    public Service(Order invoice) {
         this.invoice = invoice;
     }
 
