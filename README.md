@@ -1,3 +1,5 @@
+## HOMEWORK - 2
+
 ***• Java dünyasındaki framework’ler ve çözdükleri problemler nedir?(Spring MVC, JSP,Struct, Vaadin). Örnekler ile açıklayın. (20 Puan)***
 
 Spring MVC: Web uygulamaları build etmek için kullanılır. Model-View-Controller design patternini kullanır.  Loosely couple ve flexible uygulamalar hazırlamaya yardımcı olur. Spring core frameworkündeki tüm temel özellikleri kullanır (IoC, DI). Model, uygulamanın verisini tutar. Veri tek bir obje ya da veri koleksiyonu olabilir Genellikle POJO'ları içerir. Controller, uygulamanın logicini tutar. @Controller anotasyonu ile sınıflar işaretlenebilir. View, bilginin istenen formatta yansıtılmasıdır. Genelde JSP+JSTL kullanılır. 
